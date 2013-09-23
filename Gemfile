@@ -6,6 +6,9 @@ gem 'rails', '4.0.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
+# Use HAML for templates
+gem "haml"
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -27,6 +30,8 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+gem 'simple_form'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -43,3 +48,13 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+group :test do
+  gem 'cucumber-rails', :require => false
+  gem 'database_cleaner'
+  gem 'capybara' #, :git => 'git://github.com/jnicklas/capybara.git'
+  gem 'capybara-webkit' #, :git => 'git://github.com/thoughtbot/capybara-webkit.git', :branch => 'master'
+  gem 'rspec-rails'
+  gem 'site_prism' #, :git => 'git://github.com/mattvanhorn/site_prism.git'
+  gem 'fabrication'
+end

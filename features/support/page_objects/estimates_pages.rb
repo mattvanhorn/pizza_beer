@@ -4,15 +4,9 @@ class NewEstimatePage < SitePrism::Page
   set_url URL
   set_url_matcher %r(#{URL})
 
-  element :guests_field, "input[name='estimate[guest_count]']"
   element :hunger_select, "select[name='estimate[slice_count]']"
   element :thirst_select, "select[name='estimate[beer_count]']"
   element :submit_btn, "input[name='commit']"
-
-  def guests_expected=(guest_count)
-    load unless displayed?
-    guests_field.set guest_count
-  end
 
   def hunger_level=(hunger)
     load unless displayed?

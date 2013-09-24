@@ -3,7 +3,7 @@ require 'spec_helper'
 describe EstimatesController do
   describe '#create' do
     let(:fake_class) { Class.new }
-    let(:estimate) { double() }
+    let(:estimate) { double('fake_estimate', :guest_count= => nil) }
     let(:estimate_params){ {'guest_count' => '10', 'slice_count' => '2'} }
 
     before(:each) do

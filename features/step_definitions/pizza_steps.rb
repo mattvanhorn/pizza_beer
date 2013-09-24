@@ -1,31 +1,35 @@
-Given(/^there are (\d+) guests expected$/) do |guest_count|
-  Site.new_estimate_page.guests_expected = guest_count
+Transform /(\d+)/ do |num|
+  num.to_i
 end
 
-Given(/^the guests are (full|hungry|starving)$/) do |hunger_level|
-  Site.new_estimate_page.hunger_level = hunger_level
+Given /^there are (\d+) guests expected$/ do |guest_count|
+  guests_expected guest_count
 end
 
-Given(/^the guests (like|love) beer$/) do |thirst|
-  Site.new_estimate_page.thirst_level = thirst
+Given /^the guests are (full|hungry|starving)$/ do |hunger|
+  general_hunger_level hunger
 end
 
-Given(/^the guests are underage$/) do
-  Site.new_estimate_page.thirst_level = 'none'
+Given /^the guests (like|love) beer$/ do |thirst|
+  general_thirst_level thirst
+end
+
+Given /^the guests are underage$/ do
+  general_thirst_level 'none'
 end
 
 When 'I ask how much to order' do
-  Site.new_estimate_page.request_estimate
+  submit_request_for_estimate
 end
 
-Then(/^I will know I need to buy (\d+ pizza pies)$/) do |pie_count|
-  expect(Site.new_estimate_page).to have_text("#{pie_count}")
+Then(/^I will know I need to buy (\d+) pizza pies$/) do |pie_count|
+  verify_pizzas_needed pie_count
 end
 
-Then(/^I will know I need to buy ((?:\d+ cases?)?(?: and )?(?:\d+ six\-packs?)? of beer)$/) do |content|
-  expect(Site.new_estimate_page).to have_text(content)
+Then(/^I will know I need to buy ((?:\d+ cases?)?(?: and )?(?:\d+ six\-packs?)? of beer)$/) do |beer_text|
+  verify_beer_needed beer_text
 end
 
 Then(/^I will know I don't need to buy beer$/) do
-  expect(Site.new_estimate_page).to have_text("no beer")
+  verify_beer_needed "no beer"
 end

@@ -1,8 +1,4 @@
 module WebHelper
-  def guests_expected count
-    Site.new_estimate_page.guests_expected = count
-  end
-
   def general_hunger_level hunger
     Site.new_estimate_page.hunger_level = hunger
   end

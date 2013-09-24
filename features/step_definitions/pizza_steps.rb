@@ -3,7 +3,7 @@ Transform /(\d+)/ do |num|
 end
 
 Given /^there are (\d+) guests expected$/ do |guest_count|
-  guests_expected guest_count
+  guest_count.times{ Fabricate(:guest) }
 end
 
 Given /^the guests are (full|hungry|starving)$/ do |hunger|

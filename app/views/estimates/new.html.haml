@@ -1,5 +1,9 @@
 = simple_form_for :estimate, url: estimates_path do |form|
   = form.input :guest_count
-  = form.input :slice_count
-  = form.input :beer_count
+  = form.input :slice_count, :label => 'Hunger',
+                             :collection => [['starving',3],['hungry',2],['full',1]],
+                             :include_blank => false
+  = form.input :beer_count, :label => 'Beer',
+                             :collection => [['extremely thirsty',3],['thirsty',2],['none',0]],
+                             :include_blank => false
   = form.button :submit, :value => 'Get Estimate'

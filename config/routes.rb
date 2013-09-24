@@ -13,7 +13,7 @@ PizzaBeer::Application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
     resources :estimates, :only => [:create]
-
+    resources :guests, :only => [:index, :create]
   # Example resource route with options:
   #   resources :products do
   #     member do

@@ -1,0 +1,10 @@
+%h2 Guest List
+%ul
+  - @guests.each do |guest|
+    %li= guest.email
+
+= simple_form_for Guest.new do |form|
+  = form.input :email
+  = form.button :submit, :value => 'Add Guest'
+
+%p= link_to 'Estimate Food & Drink', root_path

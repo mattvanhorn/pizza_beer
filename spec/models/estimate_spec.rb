@@ -30,4 +30,29 @@ describe Estimate do
     estimate.slice_count = 2
     expect(estimate.pies).to eq(3)
   end
+
+  it "calculates the number of bottles" do
+    estimate.guest_count = 10
+    estimate.beer_count = 2
+    expect(estimate.bottles).to eq(20)
+  end
+
+  it "calculates the number of six-packs" do
+    estimate.guest_count = 10
+    estimate.beer_count = 2
+    expect(estimate.six_packs).to eq(4)
+  end
+
+  it "calculates the number of cases" do
+    estimate.guest_count = 10
+    estimate.beer_count = 2
+    expect(estimate.cases).to eq(1)
+  end
+
+  it "calculates the amount of beer" do
+    estimate.guest_count = 10
+    estimate.beer_count = 2
+    expect(estimate.beer).to eq([1,0])
+  end
+
 end
